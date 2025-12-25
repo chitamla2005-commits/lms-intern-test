@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+LMS Management System - Intern Test 
 
-## Getting Started
+Dự án xây dựng một phần nhỏ của hệ thống Learning Management System (LMS).
 
-First, run the development server:
+🛠 Công nghệ sử dụng 
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Framework: Next.js (App Router) 
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+UI Library: Ant Design cho bảng và form 
++1
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+Styling: Tailwind CSS hỗ trợ Dark/Light mode. 
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+State Management: Context API để quản lý Auth. 
 
-## Deploy on Vercel
+📋 Chức năng chính 
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Xác thực: Login với validation email và password (tối thiểu 6 ký tự).
+
+
+Bảo mật: Sử dụng Middleware để bảo vệ các route /courses.
+
+Quản lý khóa học (CRUD):
+
+Xem danh sách phân trang (10 items/page).
+
+Thêm mới khóa học tại /courses/add.
+
+Cập nhật thông tin tại /courses/edit/:id.
+
+Xóa khóa học sử dụng phương thức DELETE.
+
+🚀 Hướng dẫn chạy dự án 
+
+
+Clone repository: git clone <link-github-cua-ban> 
++1
+
+
+Cài đặt thư viện: npm install 
+
+Cấu hình biến môi trường: Tạo file .env.local với nội dung:
+
+
+NEXT_PUBLIC_API_URL=https://6938e7e24618a71d77d19513.mockapi.io/api/v1 
+
+
+Chạy dev: npm run dev 
+
+3. Kiểm tra các quy tắc Validation 
+
+Hãy đảm bảo Form trong dự án của bạn tuân thủ các quy tắc sau trước khi nộp:
+
+
+Email: Phải yêu cầu nhập và đúng định dạng email.
+
+
+Password: Phải tối thiểu 6 ký tự.
+
+
+Nút bấm: Phải bị Disable khi form không hợp lệ.
+
+
+Trường bắt buộc: Tên, Danh mục, Cấp độ là bắt buộc khi thêm khóa học.
+
+4. Hướng dẫn Deploy lên Vercel 
+
+Để nhận được điểm cộng lớn (significant plus point), hãy thực hiện:
+
+Đẩy code lên một Repository công khai trên GitHub.
+
+Truy cập Vercel.com, kết nối tài khoản GitHub.
+
+Chọn project lms-app.
+
+Trong phần Environment Variables, thêm biến NEXT_PUBLIC_API_URL với giá trị API đã cho.
+
+Nhấn Deploy.

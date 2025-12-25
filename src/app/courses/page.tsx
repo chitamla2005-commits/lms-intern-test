@@ -1,35 +1,34 @@
-"use client";
-import Link from "next/link";
+// src/components/CourseForm.tsx
+import { Form, Input, Button, message } from "antd";
+import { useEffect } from "react";
 
+export default function CourseForm({ initialValues, onFinish, loading }: any) {
+  const [form] = Form.useForm();
 
-export default function CourseList() {
+  useEffect(() => {
+    if (initialValues) form.setFieldsValue(initialValues);
+  }, [initialValues, form]);
+
   return (
-    <div className="container p-6 mx-auto">
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-3xl font-bold">Danh sách khóa học</h1>
-        <Link 
-          href="/courses/create" 
-          className="px-4 py-2 text-white bg-green-600 rounded hover:bg-green-700"
-        >
-          + Thêm mới
-        </Link>
-      </div>
-
-      {/* Grid Layout thay cho Inline Style */}
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-        {/* Card Item mẫu */}
-        {[1, 2, 3].map((item) => (
-          <div key={item} className="p-4 border rounded-lg shadow hover:shadow-lg dark:border-slate-700 dark:bg-slate-800">
-            <h3 className="text-xl font-semibold">Khóa học ReactJS {item}</h3>
-            <p className="mt-2 text-gray-600 dark:text-gray-400">Mô tả ngắn gọn về khóa học này...</p>
-            <div className="mt-4">
-              <Link href={`/courses/${item}`} className="text-blue-500 hover:underline">
-                Xem chi tiết &rarr;
-              </Link>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
+    <Form form={form} layout="vertical" onFinish={onFinish}>
+      <Form.Item label="Tên khóa học" name="title" rules={[{ required: true }]}>
+        <Input />
+      </Form.Item>
+      <Form.Item label="Danh mục" name="category" rules={[{ required: true }]}>
+        <Input placeholder="E.g. 4SKILLS" />
+      </Form.Item>
+      <Form.Item label="Cấp độ" name="level" rules={[{ required: true }]}>
+        <Input placeholder="E.g. Total Comprehension" />
+      </Form.Item>
+      <Form.Item label="Mô tả" name="description">
+        <Input.TextArea />
+      </Form.Item>
+      <Form.Item label="Thumbnail URL" name="thumbnail">
+        <Input placeholder="https://..." />
+      </Form.Item>
+      <Button type="primary" htmlType="submit" loading={loading} block>
+        Xác nhận lưu
+      </Button>
+    </Form>
   );
 }
